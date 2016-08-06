@@ -1,4 +1,4 @@
-class Scraping
+class ScrapingBabnavi
 
   def self.job_details #全求人情報を取得・保存（get_jobを使用)
 
@@ -17,9 +17,9 @@ class Scraping
       end
 
       #next_url(ページネーションの「次」のhref属性)を取得していく。
-      next_link = current_page.at('.next span') #「次」タグ要素
+      next_link = current_page.at('.next a') #「次」タグ要素
       break unless next_link #「次」がなくなった際にwhile文を抜け出す。
-      next_url = next_link #href属性を取り出してnext_urlに代入
+      next_url = next_link[:href] #href属性を取り出してnext_urlに代入
     end
 
     links.each do |link| #link...詳細
